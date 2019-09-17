@@ -43,10 +43,18 @@
 								  <md-radio-button value="Estimate"> Estimate </md-radio-button>								 
 								</md-radio-group>
 								
-								 <!-- <md-input-container class="md-block" flex-gt-sm> -->
-                                        <!-- <label>seller name</label> -->
-                                        <!-- <input ng-model="user.sellerName"> -->
-                                 <!-- </md-input-container>  -->
+								 <md-input-container class="md-block" flex-gt-sm> 
+                                        <label>Seller name</label> 
+                                        <input ng-model="user.sellerName"> 
+                                 </md-input-container>
+								 <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Seller PAN</label>
+                                        <input ng-model="user.sellerGSTIN">
+                                    </md-input-container>
+									<md-input-container class="md-block" flex-gt-sm>
+                                        <label>Seller Mobile No.</label>
+                                        <input ng-model="user.sellerMobile">
+                                    </md-input-container>
 								</div>
 								
                                 <!-- <div layout-gt-sm="row"> -->
@@ -358,7 +366,8 @@
                     localStorage.sellerAddressLine2= 'GHI';//'Near New Jaspark Society,',
                     localStorage.sellerAddressLine3= 'JKL';//'Isanpur, Ahmedabad -380008,',
                     localStorage.sellerGSTIN= '123QWE';//'24AKSPM8985A1ZO',
-
+					localStorage.sellerMobile = '98989898XX';//'24AKSPM8985A1ZO',
+					
                     //TODO remove values
                     localStorage.buyerName= 'XYZ';//'BIRD INK',
                     localStorage.buyerAddressLine1= 'MNO';//'Narol,',
@@ -378,7 +387,8 @@
                     sellerAddressLine2: localStorage.sellerAddressLine2,//'Near New Jaspark Society,',
                     sellerAddressLine3: localStorage.sellerAddressLine3,//'Isanpur, Ahmedabad -380008,',
                     sellerGSTIN: localStorage.sellerGSTIN,//'24AKSPM8985A1ZO',
-                  
+					sellerMobile: localStorage.sellerMobile,//'24AKSPM8985A1ZO',
+					
                     buyerName: '',//localStorage.buyerName,//
                     buyerAddressLine1: '',//localStorage.buyerAddressLine1,
                     buyerAddressLine2: 'Ahmedabad',//localStorage.buyerAddressLine2,
@@ -481,7 +491,7 @@
                     localStorage.sellerAddressLine2= $scope.user.sellerAddressLine2;//'GHI';//'Near New Jaspark Society,',
                     localStorage.sellerAddressLine3= $scope.user.sellerAddressLine3;//'JKL';//'Isanpur, Ahmedabad -380008,',
                     localStorage.sellerGSTIN= $scope.user.sellerGSTIN;//'123QWE';//'24AKSPM8985A1ZO',
-                                        
+                    localStorage.sellerMobile = $scope.user.sellerMobile;//'123QWE';//'24AKSPM8985A1ZO',                    
                 };
 
                 $scope.formatNumber = function (num) {
@@ -752,7 +762,7 @@
                                         <!-- ], -->
 										[
 											{
-												text: 'PAN : AQKPM2908H', 
+												text: $scope.user.sellerGSTIN ? 'PAN : ' + $scope.user.sellerGSTIN : '', 
 												bold: true,
                                                 fontSize: 12,
 												color: 'blue',
@@ -776,7 +786,7 @@
 												border: [false, true, false, false]
 											},
                                             {
-												text: 'M.9913511071', 
+												text: $scope.user.sellerMobile ? 'M.' + $scope.user.sellerMobile : '',
 												bold: true,
                                                 fontSize: 12,
 												color: 'blue',
@@ -791,7 +801,7 @@
                                                 bold: true,
                                                 fontSize: 25,
 												color: 'blue',
-                                                text: 'GAURANG M. MISTRI',//$scope.user.sellerName,
+                                                text: $scope.user.sellerName,
                                                 colSpan: 7,
 												alignment:'center',
 												border: [true, false, true, false],//left,top,right, boottom
